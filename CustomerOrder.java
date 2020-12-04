@@ -99,7 +99,7 @@ public class CustomerOrder<T extends Food, V extends Food> {
 
         for (Object food : this.order) {
             if (!(food instanceof Menu)) {
-                orderPrint.append("- ").append(food.getClass().getName()).append(" (").append(((Food) food).getPrice()).append(" euros)\n");
+                orderPrint.append("- ").append(((Food) food).getClass().getName()).append(" (").append(((Food) food).getPrice()).append(" euros)\n");
             }
         }
 
