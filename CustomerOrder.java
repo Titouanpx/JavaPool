@@ -43,7 +43,7 @@ public class CustomerOrder<T extends Food, V extends Food> {
             if (food instanceof Food) {
                 priceOrder += ((Food) food).getPrice();
             } else {
-                priceOrder += ((Menu) food).getPrice();
+                priceOrder += ((Menu<?,?>) food).getPrice();
             }
         }
         return priceOrder;
@@ -88,22 +88,22 @@ public class CustomerOrder<T extends Food, V extends Food> {
     }
 
     public void printOrder() {
-        String orderPrint = "Your order is composed of:\n";
+        StringBuilder orderPrint = new StringBuilder("Your order is composed of:\n");
         for (Object food : this.order) {
             if (food instanceof Menu) {
-                orderPrint += "- " + ((Menu)food).getClass().getName() + " menu " + "(" + ((Menu)food).getPrice() + " euros)\n";
-                orderPrint += "-> drink: " + ((Menu)food).getDrink().getClass().getName() + "\n";
-                orderPrint += "-> meal: " + ((Menu)food).getMeal().getClass().getName() + "\n";
+                orderPrint.append("- ").append(((Menu<?, ?>) food).getClass().getName()).append(" menu (").append(((Menu<?, ?>) food).getPrice()).append(" euros)\n");
+                orderPrint.append("-> drink: ").append(((Menu<?, ?>) food).getDrink().getClass().getName()).append("\n");
+                orderPrint.append("-> meal: ").append(((Menu<?, ?>) food).getMeal().getClass().getName()).append("\n");
             }
         }
 
         for (Object food : this.order) {
             if (!(food instanceof Menu)) {
-                orderPrint += "- " + food.getClass().getName() + " (" + ((Food)food).getPrice() + " euros)\n";
+                orderPrint.append("- ").append(food.getClass().getName()).append(" (").append(((Food) food).getPrice()).append(" euros)\n");
             }
         }
 
-        orderPrint += "For a total of " + this.getPrice() + " euros.";
+        orderPrint.append("For a total of ").append(this.getPrice()).append(" euros.");
         System.out.println(orderPrint);
     }
 }
