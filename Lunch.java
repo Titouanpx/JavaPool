@@ -1,6 +1,11 @@
-public class Lunch extends Menu{
+public class Lunch<T extends Drink, V extends Sandwich> extends Menu{
     private Drink drink;
     private Sandwich meal;
+
+    public Lunch(T drink, V sandwich) {
+        this.drink = drink;
+        this.meal = sandwich;
+    }
 
     @Override
     public Drink getDrink() {

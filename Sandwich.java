@@ -4,8 +4,8 @@ import java.util.List;
 public abstract class Sandwich implements Food{
     private float price;
     private int calories;
-    private boolean vegetation;
-    private List<String> ingredients = new ArrayList<>();
+    protected boolean vegetation;
+    protected List<String> ingredients = new ArrayList<>();
 
 
     @Override
