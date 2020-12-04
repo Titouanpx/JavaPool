@@ -14,7 +14,7 @@ public class HamSandwich extends Sandwich{
     }
 
     @Override
-    public boolean isVegetation() {
+    public boolean isVegetarian() {
         return false;
     }
 

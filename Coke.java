@@ -11,7 +11,7 @@ public class Coke extends Drink{
     }
 
     @Override
-    public boolean isaCan() {
+    public boolean isACan() {
         return true;
     }
 }

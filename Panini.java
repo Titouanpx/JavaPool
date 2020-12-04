@@ -14,7 +14,7 @@ public class Panini extends Sandwich{
     }
 
     @Override
-    public boolean isVegetation() {
+    public boolean isVegetarian() {
         return true;
     }
 

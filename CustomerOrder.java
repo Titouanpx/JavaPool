@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class CustomerOrder {
+public class CustomerOrder<T extends Food, V extends Food> {
     private Stock stock;
     private List<Object> order = new ArrayList<>();
 
@@ -50,7 +49,7 @@ public class CustomerOrder {
         return priceOrder;
     }
 
-    public boolean addMenu(Menu<Food,Food> menu) throws NoSuchFoodException {
+    public boolean addMenu(Menu<T,V> menu) throws NoSuchFoodException {
         if (this.stock.getNumberOf(menu.getMeal().getClass()) >= 1 && this.stock.getNumberOf(menu.getDrink().getClass()) >= 1) {
             if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
                 if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {
@@ -69,7 +68,7 @@ public class CustomerOrder {
         }
     }
 
-    public boolean removeMenu(Menu<Food,Food> menu) throws NoSuchFoodException {
+    public boolean removeMenu(Menu<T,V> menu) throws NoSuchFoodException {
         if (this.order.contains(menu)) {
             if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
                 if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {

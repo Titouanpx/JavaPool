@@ -11,7 +11,7 @@ public class AppleSmoothie extends Drink{
     }
 
     @Override
-    public boolean isaCan() {
+    public boolean isACan() {
         return false;
     }
 }
