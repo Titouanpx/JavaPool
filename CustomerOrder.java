@@ -19,7 +19,7 @@ public class CustomerOrder<T extends Food, V extends Food> {
                 return false;
             }
         } else {
-            throw new NoSuchFoodException("No such food type: " + food + ".");
+            throw new NoSuchFoodException("No such food type: " + food.getClass().getName() + ".");
         }
     }
 
@@ -33,7 +33,7 @@ public class CustomerOrder<T extends Food, V extends Food> {
                 return false;
             }
         } else {
-            throw new NoSuchFoodException("No such food type: " + food + ".");
+            throw new NoSuchFoodException("No such food type: " + food.getClass().getName() + ".");
         }
     }
 
@@ -61,10 +61,10 @@ public class CustomerOrder<T extends Food, V extends Food> {
                     return false;
                 }
             } else {
-                throw new NoSuchFoodException("No such food type: " + menu.getDrink() + ".");
+                throw new NoSuchFoodException("No such food type: " + menu.getMeal().getClass().getName() + ".");
             }
         } else {
-            throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
+            throw new NoSuchFoodException("No such food type: " + menu.getDrink().getClass().getName() + ".");
         }
     }
 
@@ -80,10 +80,10 @@ public class CustomerOrder<T extends Food, V extends Food> {
                     return false;
                 }
             } else {
-                throw new NoSuchFoodException("No such food type: " + menu.getDrink() + ".");
+                throw new NoSuchFoodException("No such food type: " + menu.getMeal().getClass().getName() + ".");
             }
         } else {
-            throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
+            throw new NoSuchFoodException("No such food type: " + menu.getDrink().getClass().getName() + ".");
         }
     }
 
