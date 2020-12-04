@@ -10,30 +10,30 @@ public class CustomerOrder<T extends Food, V extends Food> {
     }
 
     public boolean addItem(Food food) throws NoSuchFoodException {
-        if (this.stock.getNumberOf(food.getClass()) >= 1) {
-            if (this.stock.nbrItems.containsKey(food.getClass())) {
+        if (this.stock.nbrItems.containsKey(food.getClass())) {
+            if (this.stock.getNumberOf(food.getClass()) >= 1) {
                 this.stock.remove(food.getClass());
                 this.order.add(food);
                 return true;
             } else {
-                throw new NoSuchFoodException("No such food type: " + food + ".");
+                return false;
             }
         } else {
-            return false;
+            throw new NoSuchFoodException("No such food type: " + food + ".");
         }
     }
 
     public boolean removeItem(Food food) throws NoSuchFoodException {
-        if (this.order.contains(food)) {
-            if (this.stock.nbrItems.containsKey(food.getClass())) {
+        if (this.stock.nbrItems.containsKey(food.getClass())) {
+            if (this.order.contains(food)) {
                 this.order.remove(food);
                 this.stock.add(food.getClass());
                 return true;
             } else {
-                throw new NoSuchFoodException("No such food type: " + food + ".");
+                return false;
             }
         } else {
-            return false;
+            throw new NoSuchFoodException("No such food type: " + food + ".");
         }
     }
 
@@ -50,40 +50,40 @@ public class CustomerOrder<T extends Food, V extends Food> {
     }
 
     public boolean addMenu(Menu<T,V> menu) throws NoSuchFoodException {
-        if (this.stock.getNumberOf(menu.getMeal().getClass()) >= 1 && this.stock.getNumberOf(menu.getDrink().getClass()) >= 1) {
-            if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
-                if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {
+        if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
+            if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {
+                if (this.stock.getNumberOf(menu.getMeal().getClass()) >= 1 && this.stock.getNumberOf(menu.getDrink().getClass()) >= 1) {
                     this.stock.remove(menu.getDrink().getClass());
                     this.stock.remove(menu.getMeal().getClass());
                     this.order.add(menu);
                     return true;
                 } else {
-                    throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
+                    return false;
                 }
             } else {
                 throw new NoSuchFoodException("No such food type: " + menu.getDrink() + ".");
             }
         } else {
-            return false;
+            throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
         }
     }
 
     public boolean removeMenu(Menu<T,V> menu) throws NoSuchFoodException {
-        if (this.order.contains(menu)) {
-            if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
-                if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {
+        if (this.stock.nbrItems.containsKey(menu.getDrink().getClass())) {
+            if (this.stock.nbrItems.containsKey(menu.getMeal().getClass())) {
+                if (this.order.contains(menu)) {
                     this.order.remove(menu);
                     this.stock.add(menu.getDrink().getClass());
                     this.stock.add(menu.getMeal().getClass());
                     return true;
                 } else {
-                    throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
+                    return false;
                 }
             } else {
                 throw new NoSuchFoodException("No such food type: " + menu.getDrink() + ".");
             }
         } else {
-            return false;
+            throw new NoSuchFoodException("No such food type: " + menu.getMeal() + ".");
         }
     }
 
