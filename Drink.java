@@ -14,7 +14,7 @@ public abstract class Drink implements Food{
         return this.calories;
     }
 
-    public boolean isaCan() {
+    public boolean isACan() {
         return this.aCan;
     }
 }

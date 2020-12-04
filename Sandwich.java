@@ -4,7 +4,7 @@ import java.util.List;
 public abstract class Sandwich implements Food{
     private float price;
     private int calories;
-    protected boolean vegetation;
+    protected boolean vegetarian;
     protected List<String> ingredients = new ArrayList<>();
 
 
@@ -18,8 +18,8 @@ public abstract class Sandwich implements Food{
         return this.calories;
     }
 
-    public boolean isVegetation() {
-        return this.vegetation;
+    public boolean isVegetarian() {
+        return this.vegetarian;
     }
 
     public List<String> getIngredients() {
